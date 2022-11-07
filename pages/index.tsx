@@ -19,9 +19,12 @@ export default function Home() {
       toast.error(response.error);
     } else {
       toast.success('Login Successfully');
+      // @ts-ignore
       setCookie('email', response.user!.email, { path: '/' });
+      // @ts-ignore
       checkIfUserExist(response.user.email!).then((exist) => {
         if (!exist) {
+          // @ts-ignore
           createUser(response.user.email!);
         }
       });
